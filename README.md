@@ -32,7 +32,7 @@ This API was created with the developer experience in mind. To facilitate integr
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/library-api.git
+git clone https://github.com/kyra/library-api.git
 cd library-api
 ```
 
