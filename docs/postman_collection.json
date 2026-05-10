@@ -1,0 +1,242 @@
+{
+  "info": {
+    "name": "Library API",
+    "description": "Postman collection for the Library API - CPE 114 Final Project",
+    "_postman_id": "library-api-collection-v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Get All Authors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/authors", "host": ["localhost"], "port": "3000", "path": ["api", "authors"] }
+          },
+          "description": "Returns a list of all authors in the database."
+        },
+        {
+          "name": "Get Author by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/authors/1", "host": ["localhost"], "port": "3000", "path": ["api", "authors", "1"] }
+          },
+          "description": "Returns a single author by ID, including their books. Returns 404 if not found."
+        },
+        {
+          "name": "Create Author",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jose Rizal\",\n  \"nationality\": \"Filipino\",\n  \"bio\": \"National hero of the Philippines and prolific author.\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/authors", "host": ["localhost"], "port": "3000", "path": ["api", "authors"] }
+          },
+          "description": "Creates a new author. Returns 201 on success. Returns 400 if name is missing."
+        },
+        {
+          "name": "Update Author",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jose Rizal\",\n  \"nationality\": \"Filipino\",\n  \"bio\": \"Updated biography.\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/authors/1", "host": ["localhost"], "port": "3000", "path": ["api", "authors", "1"] }
+          },
+          "description": "Updates an existing author by ID. Returns 404 if not found."
+        },
+        {
+          "name": "Delete Author",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/authors/1", "host": ["localhost"], "port": "3000", "path": ["api", "authors", "1"] }
+          },
+          "description": "Deletes an author by ID. Returns 404 if not found."
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/books", "host": ["localhost"], "port": "3000", "path": ["api", "books"] }
+          },
+          "description": "Returns all books with their associated author."
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/books/1", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1"] }
+          },
+          "description": "Returns a single book by ID including author and current borrowers. Returns 404 if not found."
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Noli Me Tangere\",\n  \"isbn\": \"978-0-14-303958-5\",\n  \"publishedYear\": 1887,\n  \"copiesAvailable\": 3,\n  \"authorId\": 1\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/books", "host": ["localhost"], "port": "3000", "path": ["api", "books"] }
+          },
+          "description": "Creates a new book. title, isbn, and authorId are required. Returns 201 on success."
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"copiesAvailable\": 5\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/books/1", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1"] }
+          },
+          "description": "Updates a book by ID. Returns 404 if not found."
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/books/1", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1"] }
+          },
+          "description": "Deletes a book by ID. Returns 404 if not found."
+        }
+      ]
+    },
+    {
+      "name": "Members",
+      "item": [
+        {
+          "name": "Get All Members",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/members", "host": ["localhost"], "port": "3000", "path": ["api", "members"] }
+          },
+          "description": "Returns all library members."
+        },
+        {
+          "name": "Get Member by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/members/1", "host": ["localhost"], "port": "3000", "path": ["api", "members", "1"] }
+          },
+          "description": "Returns a single member including their currently borrowed books. Returns 404 if not found."
+        },
+        {
+          "name": "Create Member",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Maria Santos\",\n  \"email\": \"maria.santos@email.com\",\n  \"phone\": \"09171234567\",\n  \"membershipDate\": \"2024-01-15\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/members", "host": ["localhost"], "port": "3000", "path": ["api", "members"] }
+          },
+          "description": "Creates a new member. name and email are required. Returns 201 on success."
+        },
+        {
+          "name": "Update Member",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"09179876543\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/members/1", "host": ["localhost"], "port": "3000", "path": ["api", "members", "1"] }
+          },
+          "description": "Updates a member by ID. Returns 404 if not found."
+        },
+        {
+          "name": "Delete Member",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/members/1", "host": ["localhost"], "port": "3000", "path": ["api", "members", "1"] }
+          },
+          "description": "Deletes a member by ID. Returns 404 if not found."
+        },
+        {
+          "name": "Get Member Borrow History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/members/1/borrows", "host": ["localhost"], "port": "3000", "path": ["api", "members", "1", "borrows"] }
+          },
+          "description": "Relationship endpoint: returns all borrow records for a specific member including book details."
+        }
+      ]
+    },
+    {
+      "name": "Borrows",
+      "item": [
+        {
+          "name": "Get All Borrow Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/borrows", "host": ["localhost"], "port": "3000", "path": ["api", "borrows"] }
+          },
+          "description": "Returns all borrow records with member and book information."
+        },
+        {
+          "name": "Get Borrow Record by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:3000/api/borrows/1", "host": ["localhost"], "port": "3000", "path": ["api", "borrows", "1"] }
+          },
+          "description": "Returns a single borrow record by ID. Returns 404 if not found."
+        },
+        {
+          "name": "Borrow a Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"memberId\": 1,\n  \"bookId\": 1,\n  \"borrowDate\": \"2024-06-01\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/borrows", "host": ["localhost"], "port": "3000", "path": ["api", "borrows"] }
+          },
+          "description": "Relationship endpoint: assigns a book to a member. Reduces copiesAvailable by 1. Returns 400 if no copies available."
+        },
+        {
+          "name": "Return a Book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"returnDate\": \"2024-06-15\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/borrows/1/return", "host": ["localhost"], "port": "3000", "path": ["api", "borrows", "1", "return"] }
+          },
+          "description": "Relationship endpoint: marks a borrow record as returned and increments copiesAvailable. Returns 404 if record not found."
+        }
+      ]
+    }
+  ]
+}
