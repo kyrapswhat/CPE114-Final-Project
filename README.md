@@ -32,7 +32,7 @@ This API was created with the developer experience in mind. To facilitate integr
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kyrapswhat/library-api.git
+git clone https://github.com/kyrapswhat/CPE114-Final-Project.git
 cd library-api
 ```
 
